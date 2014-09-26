@@ -34,8 +34,8 @@ namespace FormsGallery
             // Define some data.
             List<Person> people = new List<Person>
             {
-                new Person("Abigail", new DateTime(1975, 1, 15), Color.Aqua),
-                new Person("Bob", new DateTime(1976, 2, 20), Color.Black),
+				new Person("AbigailAbigail, AbigailAbigail, AbigailAbigail, AbigailAbigail, AbigailAbigail, AbigailAbigail, AbigailAbigail", new DateTime(1975, 1, 15), Color.Aqua),
+				new Person("Bob", new DateTime(1976, 2, 20), Color.White),
                 new Person("Cathy", new DateTime(1977, 3, 10), Color.Blue),
                 new Person("David", new DateTime(1978, 4, 25), Color.Fuschia),
                 new Person("Eugenie", new DateTime(1979, 5, 5), Color.Gray),
@@ -53,7 +53,7 @@ namespace FormsGallery
                 new Person("Queenie", new DateTime(1979, 5, 15), Color.Aqua),
                 new Person("Rob", new DateTime(1980, 6, 30), Color.Blue),
                 new Person("Sally", new DateTime(1981, 7, 5), Color.Fuschia),
-                new Person("Timothy", new DateTime(1982, 8, 30), Color.Green),
+				new Person("Timothy,Timothy,Timothy,Timothy,Timothy,Timothy,Timothy,Timothy, ", new DateTime(1982, 8, 30), Color.Green),
                 new Person("Uma", new DateTime(1983, 9, 10), Color.Lime),
                 new Person("Victor", new DateTime(1984, 10, 20), Color.Maroon),
                 new Person("Wendy", new DateTime(1985, 11, 5), Color.Navy),
@@ -65,6 +65,7 @@ namespace FormsGallery
             // Create the ListView.
             ListView listView = new ListView
             {
+				HasUnevenRows = true,
                 // Source of data items.
                 ItemsSource = people,
 
@@ -82,30 +83,40 @@ namespace FormsGallery
                         new Binding("Birthday", BindingMode.OneWay, 
                                     null, null, "Born {0:d}"));
 
-                    BoxView boxView = new BoxView();
+						BoxView boxView = new BoxView();
                     boxView.SetBinding(BoxView.ColorProperty, "FavoriteColor");
+
+						BoxView boxViewTop = new BoxView(){HeightRequest = 10};
+						boxViewTop.SetBinding(BoxView.ColorProperty, "FavoriteColor");
+
 
                     // Return an assembled ViewCell.
                     return new ViewCell
                     {
                         View = new StackLayout
-                        {
+                        { 
                             Padding = new Thickness(0, 5),
-                            Orientation = StackOrientation.Horizontal,
-                            Children = 
-                            {
-                                boxView,
-                                new StackLayout
-                                {
-                                    VerticalOptions = LayoutOptions.Center,
-                                    Spacing = 0,
-                                    Children = 
-                                    {
-                                        nameLabel,
-                                        birthdayLabel
-                                    }
-                                }
-                            }
+							Orientation = StackOrientation.Vertical,
+							Children={
+									boxViewTop,
+								new StackLayout{
+										Padding = new Thickness(0,0),
+									Orientation = StackOrientation.Horizontal,
+									Children = 
+									{
+										new StackLayout
+										{
+											VerticalOptions = LayoutOptions.Center,
+											Spacing = 0,
+											Children = 
+											{
+												nameLabel,
+												birthdayLabel
+											}
+											}
+									}
+								}
+							}
                         }
                     };
                 })

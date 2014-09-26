@@ -13,24 +13,45 @@ namespace FormsGallery
             Label header = new Label
             {
                 Text = "Button",
-                Font = Font.BoldSystemFontOfSize(50),
+				Font = Font.SystemFontOfSize(50, FontAttributes.Bold),
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            Button button = new Button
+            Button buttonBold = new Button
             {
-                Text = "Click Me!",
-                Font = Font.SystemFontOfSize(NamedSize.Large),
+                Text = "89 / B",
+				Font = Font.SystemFontOfSize(NamedSize.Large, FontAttributes.Bold),
                 BorderWidth = 1,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
-            button.Clicked += OnButtonClicked;
+			buttonBold.Clicked += OnButtonClicked;
+
+
+			Button button = new Button
+			{
+				Text = "89 / B",
+				Font = Font.SystemFontOfSize(NamedSize.Large),
+				BorderWidth = 1,
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.CenterAndExpand
+			};
+			button.Clicked += OnButtonClicked;
+
+			Button buttonItalic = new Button
+			{
+				Text = "89 / B",
+				Font = Font.SystemFontOfSize(NamedSize.Large, FontAttributes.Italic),
+				BorderWidth = 1,
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.CenterAndExpand
+			};
+			buttonItalic.Clicked += OnButtonClicked;
 
             label = new Label
             {
                 Text = "0 button clicks",
-                Font = Font.SystemFontOfSize(NamedSize.Large),
+				Font = Font.SystemFontOfSize(NamedSize.Large, FontAttributes.Italic),
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
@@ -45,6 +66,8 @@ namespace FormsGallery
                 {
                     header,
                     button,
+					buttonBold,
+					buttonItalic,
                     label
                 }
             };

@@ -36,6 +36,37 @@ namespace FormsGallery
                     Intent = TableIntent.Menu,
                     Root = new TableRoot
                     {
+						new TableSection("views for Dave demo"){
+							new TextCell
+							{
+								Text = "Label",
+								Command = navigateCommand,
+								CommandParameter = typeof(LabelDemoPage)
+							},
+
+							new TextCell
+							{
+								Text = "Image",
+								Command = navigateCommand,
+								CommandParameter = typeof(ImageDemoPage)
+							},
+
+							new TextCell
+							{
+								Text = "Button",
+								Command = navigateCommand,
+								CommandParameter = typeof(ButtonDemoPage)
+							},
+
+							new TextCell
+							{
+								Text = "ListView",
+								Command = navigateCommand,
+								CommandParameter = typeof(ListViewDemoPage)
+							},
+
+						},
+
                         new TableSection("Views for Presentation")
                         {
                             new TextCell
